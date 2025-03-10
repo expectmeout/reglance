@@ -1,0 +1,392 @@
+/* Import the Gist font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Gist&display=swap');
+
+/* Base Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base layer customizations */
+@layer base {
+  :root {
+    --background: 0 0% 98%; /* Soft light background */
+    --foreground: 210 12% 10%; /* Dark gray text */
+    --card: 0 0% 100%; /* White card */
+    --card-foreground: 210 12% 10%; /* Dark text on cards */
+    --popover: 0 0% 98%; /* Light background for popovers */
+    --popover-foreground: 210 12% 10%; /* Dark text on popovers */
+    --primary: 215 80% 53%; /* Soft blue for primary accents */
+    --primary-foreground: 0 0% 100%; /* White text on primary elements */
+    --secondary: 200 20% 93%; /* Soft cool gray */
+    --secondary-foreground: 210 10% 30%; /* Darker gray for secondary text */
+    --muted: 220 10% 85%; /* Muted light gray */
+    --muted-foreground: 210 8% 40%; /* Dark gray for muted text */
+    --accent: 170 50% 50%; /* Fresh teal for accents */
+    --accent-foreground: 0 0% 100%; /* White text for accents */
+    --destructive: 0 70% 60%; /* Rich red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White text on destructive elements */
+    --border: 210 15% 85%; /* Light gray border */
+    --input: 210 10% 95%; /* Light gray input fields */
+    --ring: 215 80% 60%; /* Slightly brighter blue for ring effects */
+    --radius: 0.375rem; /* Subtle rounded corners */
+    --chart-1: 215 70% 60%; /* Primary blue shade */
+    --chart-2: 25 60% 55%; /* Muted orange */
+    --chart-3: 215 50% 70%; /* Lighter blue */
+    --chart-4: 35 40% 65%; /* Soft amber */
+    --chart-5: 210 40% 45%; /* Deep blue-gray */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --font-display: 'Gist', serif;
+  }
+  
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 210 20% 10%; /* Dark background */
+    --foreground: 210 12% 90%; /* Light text for dark mode */
+    --card: 210 20% 15%; /* Dark card */
+    --card-foreground: 210 12% 90%; /* Light text on dark cards */
+    --popover: 210 20% 15%; /* Dark background for popovers */
+    --popover-foreground: 210 12% 90%; /* Light text on dark popovers */
+    --primary: 215 80% 60%; /* Soft blue primary in dark mode */
+    --primary-foreground: 0 0% 100%; /* White text on primary elements */
+    --secondary: 200 20% 20%; /* Darker cool gray */
+    --secondary-foreground: 210 10% 80%; /* Light gray for secondary text */
+    --muted: 220 10% 30%; /* Dark muted gray */
+    --muted-foreground: 210 8% 70%; /* Lighter gray for muted text */
+    --accent: 170 50% 40%; /* Deeper teal for accents */
+    --accent-foreground: 0 0% 100%; /* White text for accents */
+    --destructive: 0 80% 50%; /* Strong red for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White text on destructive elements */
+    --border: 210 15% 30%; /* Darker border in dark mode */
+    --input: 210 10% 25%; /* Dark input fields */
+    --ring: 215 80% 70%; /* Brighter blue ring effect in dark mode */
+    --chart-1: 215 70% 65%; /* Primary blue shade */
+    --chart-2: 25 60% 60%; /* Muted orange */
+    --chart-3: 215 50% 75%; /* Lighter blue */
+    --chart-4: 35 40% 70%; /* Soft amber */
+    --chart-5: 210 40% 50%; /* Deep blue-gray */
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family);
+  }
+  
+  h1, h2, h3, h4, h5 {
+    @apply font-medium tracking-tight text-foreground;
+    font-family: var(--font-display);
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl mb-4;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl mb-3;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl mb-2;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  p {
+    @apply leading-relaxed mb-4;
+  }
+  
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors duration-200;
+  }
+  
+  blockquote {
+    @apply pl-4 border-l-4 border-muted italic my-6;
+  }
+  
+  code {
+    @apply px-1.5 py-0.5 rounded bg-secondary text-secondary-foreground font-mono text-sm;
+  }
+}
+
+/* Component layer styling */
+@layer components {
+  .card {
+    @apply rounded-lg border border-border bg-card p-6 shadow-sm transition-all duration-200;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-md hover:border-primary/20 hover:-translate-y-0.5;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors 
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+           disabled:opacity-50 disabled:pointer-events-none h-10 py-2 px-4;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+  
+  .btn-outline {
+    @apply border border-input hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  .btn-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
+  
+  .btn-sm {
+    @apply h-9 px-3 rounded-md;
+  }
+  
+  .btn-lg {
+    @apply h-11 px-8 rounded-md;
+  }
+  
+  .btn-icon {
+    @apply h-10 w-10 p-0 rounded-full;
+  }
+  
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-input px-3 py-2 text-sm
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+  
+  .select {
+    @apply flex h-10 w-full rounded-md border border-input bg-input px-3 py-2 text-sm
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+  
+  .label {
+    @apply text-sm font-medium text-foreground mb-2 block;
+  }
+  
+  .nav-link {
+    @apply px-4 py-2 text-foreground/80 hover:text-foreground transition-colors duration-200
+           rounded-md hover:bg-accent;
+  }
+  
+  .nav-link-active {
+    @apply bg-accent text-accent-foreground font-medium;
+  }
+  
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  
+  .badge-primary {
+    @apply bg-primary/10 text-primary;
+  }
+  
+  .badge-secondary {
+    @apply bg-secondary/10 text-secondary-foreground;
+  }
+  
+  .badge-outline {
+    @apply border border-border;
+  }
+  
+  .badge-destructive {
+    @apply bg-destructive/10 text-destructive;
+  }
+  
+  .dashboard-card {
+    @apply rounded-lg border border-border bg-card p-5 flex flex-col shadow-sm;
+  }
+  
+  .dashboard-stat {
+    @apply text-3xl font-semibold mb-1;
+  }
+  
+  .dashboard-label {
+    @apply text-sm text-muted-foreground;
+  }
+  
+  .dashboard-trend-up {
+    @apply text-green-600 dark:text-green-400 text-sm flex items-center gap-1;
+  }
+  
+  .dashboard-trend-down {
+    @apply text-red-600 dark:text-red-400 text-sm flex items-center gap-1;
+  }
+  
+  .table-container {
+    @apply w-full overflow-auto rounded-md border border-border;
+  }
+  
+  .table {
+    @apply w-full caption-bottom text-sm;
+  }
+  
+  .table-header {
+    @apply [&_tr]:border-b bg-muted/50;
+  }
+  
+  .table-head {
+    @apply h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0;
+  }
+  
+  .table-body {
+    @apply [&_tr:last-child]:border-0;
+  }
+  
+  .table-row {
+    @apply border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted;
+  }
+  
+  .table-cell {
+    @apply p-4 align-middle [&:has([role=checkbox])]:pr-0;
+  }
+  
+  .timeline {
+    @apply relative ml-6;
+  }
+  
+  .timeline-item {
+    @apply mb-10 relative;
+  }
+  
+  .timeline-item::before {
+    content: "";
+    @apply absolute w-3 h-3 rounded-full bg-primary left-[-1.625rem] top-1.5;
+  }
+  
+  .timeline-item::after {
+    content: "";
+    @apply absolute w-px bg-border left-[-1.5rem] top-3 h-full;
+  }
+  
+  .timeline-item:last-child::after {
+    @apply hidden;
+  }
+}
+
+/* Utility layer additions */
+@layer utilities {
+  .glass-effect {
+    @apply bg-card/80 backdrop-blur-md border border-border/50;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+  
+  .section-divider {
+    @apply relative py-10;
+  }
+  
+  .section-divider::before {
+    content: "";
+    @apply absolute left-1/2 -translate-x-1/2 top-0 w-16 h-px bg-border;
+  }
+  
+  .card-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+  
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+  
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_1px_theme(colors.primary.DEFAULT/30%)];
+  }
+  
+  .img-rounded {
+    @apply rounded-lg overflow-hidden;
+  }
+  
+  .img-circle {
+    @apply rounded-full overflow-hidden;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+/* Add custom Tailwind keyframe animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scale {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-scale {
+  animation: scale 0.3s ease-out;
+}

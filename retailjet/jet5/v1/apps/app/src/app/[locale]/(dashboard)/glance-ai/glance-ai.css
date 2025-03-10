@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bubble-assistant: 210 20% 96%;
+    --bubble-user: 215 60% 45%;
+    --highlight-code: 221 83% 53%;
+  }
+
+  .dark {
+    --bubble-assistant: 220 10% 14%;
+    --bubble-user: 215 60% 45%;
+    --highlight-code: 221 83% 53%;
+  }
+}
+
+@layer components {
+  /* Global chat UI components */
+  .ai-message pre {
+    @apply bg-muted my-4 overflow-x-auto rounded-lg p-4;
+  }
+
+  .ai-message pre code {
+    @apply bg-transparent text-sm;
+  }
+
+  .ai-message code:not(pre code) {
+    @apply bg-muted px-1.5 py-0.5 rounded-md text-sm font-mono;
+  }
+
+  .ai-message p {
+    @apply leading-7 mb-4;
+  }
+
+  .ai-message p:last-child {
+    @apply mb-0;
+  }
+
+  .ai-message a {
+    @apply text-primary underline underline-offset-4;
+  }
+
+  .ai-message ul, .ai-message ol {
+    @apply my-2 ml-6;
+  }
+
+  .ai-message ul {
+    @apply list-disc;
+  }
+
+  .ai-message ol {
+    @apply list-decimal;
+  }
+
+  .ai-message li {
+    @apply my-1;
+  }
+
+  .ai-message h1, .ai-message h2, .ai-message h3, .ai-message h4 {
+    @apply font-semibold mt-6 mb-3;
+  }
+
+  .ai-message h1 {
+    @apply text-2xl;
+  }
+
+  .ai-message h2 {
+    @apply text-xl;
+  }
+
+  .ai-message h3 {
+    @apply text-lg;
+  }
+
+  .ai-message h4 {
+    @apply text-base;
+  }
+
+  .ai-message blockquote {
+    @apply border-l-4 border-border pl-4 py-1 my-4 italic;
+  }
+
+  .ai-message table {
+    @apply min-w-[50%] border-collapse border border-border my-4;
+  }
+
+  .ai-message th, .ai-message td {
+    @apply border border-border px-4 py-2;
+  }
+
+  .ai-message th {
+    @apply bg-muted font-semibold;
+  }
+
+  /* Custom scrollbar styles */
+  .chat-scrollbar::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  .chat-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .chat-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  .chat-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+
+  /* MultimodalInput specific styles */
+  textarea:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .size-full {
+    width: 100%;
+    height: 100%;
+  }
+
+  .size-0\.5 {
+    width: 0.125rem;
+    height: 0.125rem;
+  }
+
+  .rounded-2xl {
+    border-radius: 1rem;
+  }
+
+  .pointer-events-none {
+    pointer-events: none;
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Truncate text for attachment names */
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* Code highlighting styles for Prism.js */
+.code-highlight {
+  @apply text-foreground;
+}
+
+.code-line {
+  @apply py-1;
+}
+
+.code-line.inserted {
+  @apply bg-emerald-500/10;
+}
+
+.code-line.deleted {
+  @apply bg-red-500/10;
+}
+
+.highlight-line {
+  @apply -mx-4 px-4 border-l-4 border-primary;
+}
+
+.line-number::before {
+  @apply inline-block w-4 text-muted-foreground mr-4 text-right;
+  content: attr(line);
+}
